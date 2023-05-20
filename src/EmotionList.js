@@ -102,7 +102,7 @@ const EmotionList = ({ emotions }) => {
         ))}
       </Box>
       <Box py="3" display="flex" justifyContent="center" >
-        {imageUrl && <img src={imageUrl} alt="Emotion text" width="50%" height="auto" />}
+        {imageUrl && <img src={imageUrl} alt="Emotion text"  />}
       </Box>
     </Container>
   );
