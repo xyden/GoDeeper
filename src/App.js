@@ -12,7 +12,7 @@ const App = () => {
   };
 
   return (
-    <ChakraProvider>
+    <ChakraProvider colorMode="dark">
       <Router>
         <Routes>
           <Route path="/form" element={<EmotionForm onSubmit={handleSubmit} />} />

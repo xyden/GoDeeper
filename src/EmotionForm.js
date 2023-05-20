@@ -39,7 +39,7 @@ function EmotionForm({ onSubmit }) {
         return [...prevSelected, emotionObject];
       }
     });
-};
+  };
 
 
   const handleSubmit = (e) => {
@@ -47,6 +47,8 @@ function EmotionForm({ onSubmit }) {
     onSubmit(selectedEmotions);
     navigate("/list");
   };
+
+  const isSubmitDisabled = selectedEmotions.length === 0;
 
   return (
     <Box as="form" onSubmit={handleSubmit}>
@@ -75,9 +77,11 @@ function EmotionForm({ onSubmit }) {
           ))}
         </Accordion>
       </Container>
-      <Flex position="sticky" bottom="0" bg="gray.700" width="100%" justify="center" px="4" py="2">
-          <Button type="submit" flex="1">Submit</Button>
-      </Flex>
+     
+        <Flex position="sticky" bottom="0" bg="gray.700" width="100%" justify="center" px="4" py="2">
+          <Button type="submit" isDisabled={isSubmitDisabled} flex="1" maxW="container.md">Share your feelings</Button>
+        </Flex>
+
     </Box>
   );
 }
