@@ -3,26 +3,26 @@ import { useNavigate } from 'react-router-dom';
 import { Box, Checkbox, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Button, Container, Flex, Stack } from "@chakra-ui/react";
 
 const emotionsData = {
-        "ANNOYED": ["Bitter", "edgy", "exasperated", "frustrated", "grumpy", "impatient", "irritable", "irked"],
-        "ANGRY": ["agitated", "enraged", "exasperated", "furious", "irate", "outraged", "resentful", "upset"],
-        "AVERSION": ["appalled", "contempt", "disgusted", "dislike", "horrified", "repulsed"],
-        "CONFUSED": ["baffled", "bewildered", "dazed", "hesitant", "lost", "mystified", "perplexed", "puzzled", "torn"],
-        "DISCOMFORT": ["agitated", "alarmed", "discombobulated", "disturbed", "perturbed", "rattled", "restless", "shocked", "startled", "surprised", "troubled", "turbulent", "uncomfortable", "uneasy", "unsettled"],
-        "DISCONNECTED": ["apathetic", "bored", "distant", "distracted", "indifferent", "numb", "uninterested", "withdrawn"],
-        "EMBARRASSED": ["ashamed", "flustered", "guilty", "self-conscious"],
-        "FEARFUL": ["afraid", "apprehensive", "anxious", "distress", "frightened", "hesitant", "nervous", "panicked", "paralyzed", "petrified", "scared", "tense", "terrified", "worried"],
-        "PAIN": ["agony", "devastated", "grief", "heartbroken", "hurt", "lonely", "miserable", "regretful", "remorseful"],
-        "SAD": ["depressed", "despondent", "disappointed", "discouraged", "disheartened", "dismayed", "gloomy", "heavy hearted", "hopeless", "troubled", "unhappy", "wretched"],
-        "STRESSED/TIRED": ["burnt out", "depleted", "exhausted", "fatigued", "listless", "overwhelmed", "restless", "sleep", "weary", "worn out"],
-        "VULNERABLE": ["fragile", "guarded", "helpless", "insecure", "leery", "reserved", "sensitive", "shaky", "tender"],
-        "YEARNING": ["envious", "jealous", "longing", "pining", "wishful"],
-        "AFFECTION": ["compassionate", "friendly", "loving", "sympathetic", "tender", "warm"],
-        "INTERESTED": ["absorbed", "alert", "curious", "enchanted", "engaged", "fascinated", "intrigued", "spellbound", "stimulated"],
-        "GLAD": ["alive", "amazed", "amused", "awed", "encouraged", "energetic", "enthusiastic", "excited", "grateful", "happy", "hopeful", "inspired", "invigorated", "joyful", "motivated", "optimistic", "pleased", "thrilled", "wonder"],
-        "GRATEFUL": ["appreciative", "moved", "thankful", "touched"],
-        "HOPEFUL": ["encouraged", "expectant", "optimistic"],
-        "PEACEFUL": ["calm", "comfortable", "centered", "composed", "content", "fulfilled", "relaxed", "relieved", "satisfied"],
-        "RESTED": ["Alert", "alive", "energized", "invigorated", "refreshed", "rejuvenated", "relaxed", "renewed", "strong"]    
+  "ANNOYED": ["Bitter", "Edgy", "Exasperated", "Frustrated", "Grumpy", "Impatient", "Irritable", "Irked"],
+  "ANGRY": ["Agitated", "Enraged", "Exasperated", "Furious", "Irate", "Outraged", "Resentful", "Upset"],
+  "AVERSION": ["Appalled", "Contempt", "Disgusted", "Dislike", "Horrified", "Repulsed"],
+  "CONFUSED": ["Baffled", "Bewildered", "Dazed", "Hesitant", "Lost", "Mystified", "Perplexed", "Puzzled", "Torn"],
+  "DISCOMFORT": ["Agitated", "Alarmed", "Discombobulated", "Disturbed", "Perturbed", "Rattled", "Restless", "Shocked", "Startled", "Surprised", "Troubled", "Turbulent", "Uncomfortable", "Uneasy", "Unsettled"],
+  "DISCONNECTED": ["Apathetic", "Bored", "Distant", "Distracted", "Indifferent", "Numb", "Uninterested", "Withdrawn"],
+  "EMBARRASSED": ["Ashamed", "Flustered", "Guilty", "Self-conscious"],
+  "FEARFUL": ["Afraid", "Apprehensive", "Anxious", "Distress", "Frightened", "Hesitant", "Nervous", "Panicked", "Paralyzed", "Petrified", "Scared", "Tense", "Terrified", "Worried"],
+  "PAIN": ["Agony", "Devastated", "Grief", "Heartbroken", "Hurt", "Lonely", "Miserable", "Regretful", "Remorseful"],
+  "SAD": ["Depressed", "Despondent", "Disappointed", "Discouraged", "Disheartened", "Dismayed", "Gloomy", "Heavy Hearted", "Hopeless", "Troubled", "Unhappy", "Wretched"],
+  "STRESSED/TIRED": ["Burnt Out", "Depleted", "Exhausted", "Fatigued", "Listless", "Overwhelmed", "Restless", "Sleep", "Weary", "Worn Out"],
+  "VULNERABLE": ["Fragile", "Guarded", "Helpless", "Insecure", "Leery", "Reserved", "Sensitive", "Shaky", "Tender"],
+  "YEARNING": ["Envious", "Jealous", "Longing", "Pining", "Wishful"],
+  "AFFECTION": ["Compassionate", "Friendly", "Loving", "Sympathetic", "Tender", "Warm"],
+  "INTERESTED": ["Absorbed", "Alert", "Curious", "Enchanted", "Engaged", "Fascinated", "Intrigued", "Spellbound", "Stimulated"],
+  "GLAD": ["Alive", "Amazed", "Amused", "Awed", "Encouraged", "Energetic", "Enthusiastic", "Excited", "Grateful", "Happy", "Hopeful", "Inspired", "Invigorated", "Joyful", "Motivated", "Optimistic", "Pleased", "Thrilled", "Wonder"],
+  "GRATEFUL": ["Appreciative", "Moved", "Thankful", "Touched"],
+  "HOPEFUL": ["Encouraged", "Expectant", "Optimistic"],
+  "PEACEFUL": ["Calm", "Comfortable", "Centered", "Composed", "Content", "Fulfilled", "Relaxed", "Relieved", "Satisfied"],
+  "RESTED": ["Alert", "Alive", "Energized", "Invigorated", "Refreshed", "Rejuvenated", "Relaxed", "Renewed", "Strong"]
 };
 
 function EmotionForm({ onSubmit }) {
@@ -65,9 +65,9 @@ function EmotionForm({ onSubmit }) {
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                <Stack spacing={3}>
+                <Stack spacing={0}>
                   {emotionsData[category].map((emotion) => (
-                    <Checkbox key={emotion} onChange={() => handleCheckboxChange(emotion, category)}>
+                    <Checkbox key={emotion} height="44px" onChange={() => handleCheckboxChange(emotion, category)}>
                       {emotion}
                     </Checkbox>
                   ))}
