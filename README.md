@@ -1,5 +1,6 @@
-<<<<<<< HEAD
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# My Emotions
+
+Web app that allows users to select and process their emotions, and share them with their therapist or others for support and understanding
 
 ## Available Scripts
 
@@ -67,7 +68,3 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-=======
-# My-Emotions
-Web app that allows users to select and process their emotions, and share them with their therapist or others for support and understanding
->>>>>>> 4e9b0c0af47a412ea42ae1df802d24d4f57ddd96
