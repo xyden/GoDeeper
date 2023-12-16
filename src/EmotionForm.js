@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { Box, Checkbox, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Button, Container, Flex, Stack } from "@chakra-ui/react";
+import { Box, Checkbox, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Button, Container, Flex, Stack, useColorMode } from "@chakra-ui/react";
 
 const emotionsData = {
   "ANNOYED": ["Bitter", "Edgy", "Exasperated", "Frustrated", "Grumpy", "Impatient", "Irritable", "Irked"],
@@ -45,10 +45,12 @@ function EmotionForm({ onSubmit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(selectedEmotions);
+    console.log(selectedEmotions);
     navigate("/list");
   };
 
   const isSubmitDisabled = selectedEmotions.length === 0;
+  const { colorMode } = useColorMode();
 
   return (
     <Box as="form" onSubmit={handleSubmit}>
@@ -67,7 +69,7 @@ function EmotionForm({ onSubmit }) {
               <AccordionPanel pb={4}>
                 <Stack spacing={0}>
                   {emotionsData[category].map((emotion) => (
-                    <Checkbox key={emotion} height="44px" onChange={() => handleCheckboxChange(emotion, category)}>
+                    <Checkbox key={emotion} height="48px" onChange={() => handleCheckboxChange(emotion, category)}>
                       {emotion}
                     </Checkbox>
                   ))}
@@ -78,7 +80,11 @@ function EmotionForm({ onSubmit }) {
         </Accordion>
       </Container>
      
-        <Flex position="sticky" bottom="0" bg="gray.700" width="100%" justify="center" px="4" py="2">
+        <Flex 
+          position="sticky" 
+          bottom="0" 
+          bg={colorMode === 'light' ? 'white' : 'gray.700'}
+          width="100%" justify="center" px="4" py="2">
           <Button type="submit" isDisabled={isSubmitDisabled} flex="1" maxW="container.md">Share your feelings</Button>
         </Flex>
 
