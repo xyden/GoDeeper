@@ -68,45 +68,117 @@ const generateImage = (groupedEmotions) => {
   
   
 
-const EmotionList = ({ emotions }) => {
-  const [imageUrl, setImageUrl] = useState(null);
+// const EmotionList = ({ emotions }) => {
+//   const [imageUrl, setImageUrl] = useState(null);
 
-  useEffect(() => {
-    const groupedEmotions = groupByCategory(emotions);
-    const imageUrl = generateImage(groupedEmotions);
-    setImageUrl(imageUrl);
-  }, [emotions]);
+//   useEffect(() => {
+//     const groupedEmotions = groupByCategory(emotions);
+//     const imageUrl = generateImage(groupedEmotions);
+//     setImageUrl(imageUrl);
+//   }, [emotions]);
   
 
+//   const groupByCategory = (emotions) => {
+//     return emotions.reduce((grouped, emotionObj) => {
+//       const { category, emotion } = emotionObj;
+//       if (!grouped[category]) {
+//         grouped[category] = [];
+//       }
+//       grouped[category].push(emotion);
+//       return grouped;
+//     }, {});
+//   };
+
+//   const groupedEmotions = groupByCategory(emotions);
+
+//   return (
+//     <Container maxW="container.md" justify="center">
+//       <Box py="3" display="flex" justifyContent="center" flexDirection="column" alignItems="center">
+//         <Text fontSize="xl">Emotions:</Text>
+//         {Object.entries(groupedEmotions).map(([category, emotions], index) => (
+//           <Text key={index}>
+//             {category}: {emotions.join(", ")}
+//           </Text>
+//         ))}
+//       </Box>
+//       <Box py="3" display="flex" justifyContent="center" >
+//         {imageUrl && <img src={imageUrl} alt="Emotion text"  />}
+//       </Box>
+//     </Container>
+//   );
+// };
+// export default EmotionList;
+
+const EmotionList = ({ emotions }) => {
+  const [imageUrl, setImageUrl] = useState(null);
+  const [groupedEmotions, setGroupedEmotions] = useState({});
+
+  // Function to group emotions by category
   const groupByCategory = (emotions) => {
-    return emotions.reduce((grouped, emotionObj) => {
-      const { category, emotion } = emotionObj;
-      if (!grouped[category]) {
-        grouped[category] = [];
-      }
-      grouped[category].push(emotion);
-      return grouped;
-    }, {});
+      return emotions.reduce((grouped, emotionObj) => {
+          const { category, emotion } = emotionObj;
+          if (!grouped[category]) {
+              grouped[category] = [];
+          }
+          grouped[category].push(emotion);
+          return grouped;
+      }, {});
   };
 
-  const groupedEmotions = groupByCategory(emotions);
+  const logEmotions = (groupedEmotions) => {
+    const logEntry = {
+        dateTime: new Date().toISOString(),
+        emotions: groupedEmotions
+    };
+    
+    let existingLog;
+    try {
+        // Attempt to parse the existing log
+        existingLog = JSON.parse(localStorage.getItem('emotionLog')) || [];
+        if (!Array.isArray(existingLog)) {
+            // If existingLog is not an array, initialize it as an empty array
+            console.error("Invalid format in local storage. Initializing a new log.");
+            existingLog = [];
+        }
+    } catch (error) {
+        // If there's an error in parsing (e.g., corrupted data), initialize as an empty array
+        console.error("Error parsing local storage data: ", error);
+        existingLog = [];
+    }
+    
+    // Append the new log entry
+    existingLog.push(logEntry);
+    
+    // Save the updated log
+    localStorage.setItem('emotionLog', JSON.stringify(existingLog));
+};
+
+
+  useEffect(() => {
+      const grouped = groupByCategory(emotions);
+      setGroupedEmotions(grouped);
+
+      logEmotions(grouped);
+
+      const imageUrl = generateImage(grouped);
+      setImageUrl(imageUrl);
+  }, [emotions]);
 
   return (
-    <Container maxW="container.md" justify="center">
-      <Box py="3" display="flex" justifyContent="center" flexDirection="column" alignItems="center">
-        <Text fontSize="xl">Emotions:</Text>
-        {Object.entries(groupedEmotions).map(([category, emotions], index) => (
-          <Text key={index}>
-            {category}: {emotions.join(", ")}
-          </Text>
-        ))}
-      </Box>
-      <Box py="3" display="flex" justifyContent="center" >
-        {imageUrl && <img src={imageUrl} alt="Emotion text"  />}
-      </Box>
-    </Container>
+      <Container maxW="container.md" justify="center">
+          <Box py="3" display="flex" justifyContent="center" flexDirection="column" alignItems="center">
+              <Text fontSize="xl">Emotions:</Text>
+              {Object.entries(groupedEmotions).map(([category, emotions], index) => (
+                  <Text key={index}>
+                      {category}: {emotions.join(", ")}
+                  </Text>
+              ))}
+          </Box>
+          <Box py="3" display="flex" justifyContent="center" >
+              {imageUrl && <img src={imageUrl} alt="Emotion text" />}
+          </Box>
+      </Container>
   );
-
 };
 
 export default EmotionList;

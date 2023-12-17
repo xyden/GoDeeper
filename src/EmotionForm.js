@@ -98,7 +98,7 @@ function EmotionForm({ onSubmit }) {
           justify="center" 
           px="4" 
           py="2">
-          <Button type="submit" size='lg' h="64px" isDisabled={isSubmitDisabled} flex="1" maxW="container.md">Share your feelings</Button>
+          <Button type="submit" size='lg' h="48px" isDisabled={isSubmitDisabled} flex="1" maxW="container.md">Share your feelings</Button>
         </Flex>
 
     </Box>
