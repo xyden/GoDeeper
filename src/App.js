@@ -3,10 +3,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import EmotionList from "./EmotionList";
 import EmotionForm from "./EmotionForm";
-import theme from './theme'; // Import your custom theme
+import theme from './theme';
+import useUpdateThemeColor from './updateThemeColorHook';
+
 
 const App = () => {
   const [selectedEmotions, setSelectedEmotions] = useState([]);
+
+  useUpdateThemeColor();
 
   const handleSubmit = (emotions) => {
     setSelectedEmotions(emotions);
