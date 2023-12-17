@@ -60,7 +60,7 @@ function EmotionForm({ onSubmit }) {
           src='logo512-2.png' alt='Logo' 
           w={[128, 200, 200]}
           borderRadius="50%"
-          boxShadow='dark-lg'
+          boxShadow= {colorMode === 'light' ? 'md' : 'dark-lg'}
         />
         <Text fontSize='lg' as='b'>GoDeeper</Text>
       </VStack>
