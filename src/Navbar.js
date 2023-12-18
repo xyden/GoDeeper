@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Text, Button, useColorModeValue, useColorMode, IconButton } from '@chakra-ui/react';
+import { Box, Flex, Text, Button, useColorModeValue, IconButton } from '@chakra-ui/react';
 import { CalendarIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
 
