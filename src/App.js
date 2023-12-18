@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import EmotionList from "./EmotionList";
 import EmotionForm from "./EmotionForm";
+import Navbar from "./Navbar";
 import EmotionCalendar from "./EmotionCalendar";
 import theme from './theme';
 import useUpdateThemeColor from './updateThemeColorHook';
@@ -43,6 +44,7 @@ const App = () => {
   return (
     <ChakraProvider theme={theme}>
       <Router>
+      {/* <Navbar /> */}
         <Routes>
           <Route path="/form" element={<EmotionForm onSubmit={handleSubmit} />} />
           <Route path="/list" element={<EmotionList emotions={selectedEmotions} />} />

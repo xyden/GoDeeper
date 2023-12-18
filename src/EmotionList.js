@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box, Container, Text } from "@chakra-ui/react";
+import { Link } from 'react-router-dom';
 
 const generateImage = (groupedEmotions) => {
     const canvas = document.createElement('canvas');
@@ -81,35 +82,6 @@ const generateImage = (groupedEmotions) => {
       }, {});
     };
 
-//   const logEmotions = (groupedEmotions) => {
-//     const logEntry = {
-//         dateTime: new Date().toISOString(),
-//         emotions: groupedEmotions
-//     };
-    
-//     let existingLog;
-//     try {
-//         // Attempt to parse the existing log
-//         existingLog = JSON.parse(localStorage.getItem('emotionLog')) || [];
-//         if (!Array.isArray(existingLog)) {
-//             // If existingLog is not an array, initialize it as an empty array
-//             console.error("Invalid format in local storage. Initializing a new log.");
-//             existingLog = [];
-//         }
-//     } catch (error) {
-//         // If there's an error in parsing (e.g., corrupted data), initialize as an empty array
-//         console.error("Error parsing local storage data: ", error);
-//         existingLog = [];
-//     }
-    
-//     // Append the new log entry
-//     existingLog.push(logEntry);
-    
-//     // Save the updated log
-//     localStorage.setItem('emotionLog', JSON.stringify(existingLog));
-// };
-
-
   useEffect(() => {
     const grouped = groupByCategory(emotions);
     setGroupedEmotions(grouped);
@@ -126,10 +98,12 @@ const generateImage = (groupedEmotions) => {
                       {category}: {emotions.join(", ")}
                   </Text>
               ))}
+              {imageUrl && <img style={{marginTop:"24px", }} src={imageUrl} alt="Emotion text" />}
+              <Link to="/calendar" style={{marginTop:"24px", }}>Emotion Calendar</Link>
+
           </Box>
-          <Box py="3" display="flex" justifyContent="center" >
-              {imageUrl && <img src={imageUrl} alt="Emotion text" />}
-          </Box>
+
+
       </Container>
   );
 };
