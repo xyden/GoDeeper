@@ -96,7 +96,7 @@ function EmotionForm({ onSubmit }) {
           position="sticky" 
           bottom="0" 
           py="2"
-          pb={isPwaInstalled ? '32px' : '0'}
+          pb={isPwaInstalled ? '32px' : '2'}
           bg={colorMode === 'light' ? 'white' : 'gray.700'}
           width="100%" 
           justify="center" 
