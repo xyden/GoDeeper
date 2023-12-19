@@ -86,7 +86,7 @@ const EmotionCalendar = () => {
 
     return (
         <Container maxW="container.md" justify="center">
-          <Box p="4" display="flex" justifyContent="center" flexDirection="column" bg={bgColor} color={textColor} borderColor={borderColor}>
+          <Box mt="4" display="flex" justifyContent="center" flexDirection="column" bg={bgColor} color={textColor} borderColor={borderColor}>
             <Calendar
                 onChange={handleDayClick}
                 value={selectedDate}
