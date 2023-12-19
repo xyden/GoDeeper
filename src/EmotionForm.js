@@ -95,12 +95,13 @@ function EmotionForm({ onSubmit }) {
         <Flex 
           position="sticky" 
           bottom="0" 
-          mb={isPwaInstalled ? '48px' : '0'}
+          py="2"
+          pb={isPwaInstalled ? '48px' : '0'}
           bg={colorMode === 'light' ? 'white' : 'gray.700'}
           width="100%" 
           justify="center" 
           px="4" 
-          py="2">
+          >
 
           <Button 
             type="submit" 
