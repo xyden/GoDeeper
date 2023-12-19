@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Box, Checkbox, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Button, Container, Flex, Image, Stack, VStack, Text, useColorMode } from "@chakra-ui/react";
+import usePwaStatus from './usePwaStatus';
 
 const emotionsData = {
   "ANNOYED": ["Bitter", "Edgy", "Exasperated", "Frustrated", "Grumpy", "Impatient", "Irritable", "Irked"],
@@ -51,18 +52,19 @@ function EmotionForm({ onSubmit }) {
 
   const isSubmitDisabled = selectedEmotions.length === 0;
   const { colorMode } = useColorMode();
+  const isPwaInstalled = usePwaStatus();
 
   return (
     <Box as="form" onSubmit={handleSubmit}>
-      <VStack justify="center" w="100%" mt="24px"
-          mb="24px">
+      <VStack justify="center" w="100%" mt="24px" mb="24px">
         <Image 
           src='logo512-2.png' alt='Logo' 
           w={[128, 200, 200]}
           borderRadius="50%"
           boxShadow= {colorMode === 'light' ? 'md' : 'dark-lg'}
         />
-        <Text fontSize='lg' as='b'>GoDeeper</Text>
+        <Text fontSize='xl' as='b'>Go Deeper</Text>
+        <Text fontSize='xs' mt="-2">Find and track your feelings</Text>
       </VStack>
       <Container maxW="container.md">
         <Accordion allowMultiple>
@@ -93,12 +95,20 @@ function EmotionForm({ onSubmit }) {
         <Flex 
           position="sticky" 
           bottom="0" 
+          mb={isPwaInstalled ? '48px' : '0'}
           bg={colorMode === 'light' ? 'white' : 'gray.700'}
           width="100%" 
           justify="center" 
           px="4" 
           py="2">
-          <Button type="submit" size='lg' h="48px" isDisabled={isSubmitDisabled} flex="1" maxW="container.md">Share your feelings</Button>
+
+          <Button 
+            type="submit" 
+            size='lg' 
+            h="48px" 
+            isDisabled={isSubmitDisabled} 
+            flex="1" 
+            maxW="container.md">Save your feelings</Button>
         </Flex>
 
     </Box>
