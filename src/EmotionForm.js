@@ -47,7 +47,7 @@ function EmotionForm({ onSubmit }) {
     e.preventDefault();
     onSubmit(selectedEmotions);
     console.log(selectedEmotions);
-    navigate("/list");
+    navigate("/calendar");
   };
 
   const isSubmitDisabled = selectedEmotions.length === 0;

@@ -190,7 +190,16 @@
     background-color: #e6e6e6;
 }
 
+
+.emotions ul {
+    margin-bottom: 16px;
+}
+
 .emotions li {
     list-style: none;
     padding-left: 16px;
+}
+
+.react-calendar__navigation__prev2-button, .react-calendar__navigation__next2-button {
+    display: none;
 }

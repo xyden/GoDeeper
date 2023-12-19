@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
-import { Container, Box, useColorModeValue } from '@chakra-ui/react';
+import { Box, Container, Divider, useColorModeValue } from '@chakra-ui/react';
+
 import './css/calendar.css';
 
 
@@ -68,10 +69,10 @@ const EmotionCalendar = () => {
         if (emotionsForDate) {
             return Object.entries(emotionsForDate).map(([time, categories]) => (
                 <div key={time}>
-                    <div style={{marginTop:"24px", fontWeight:"bold"}}>{time}</div>
+                    <div style={{marginTop:"24px", fontWeight:"bold", marginBottom:"16px", fontSize:"24px"}}>{time}</div>
                     {Object.entries(categories).map(([category, emotions]) => (
                         <div key={category}>
-                            <strong>{category}:</strong>
+                            <strong>{category}</strong>
                             <ul className="emotions">
                                 {emotions.map((emotion, index) => <li key={index}>{emotion}</li>)}
                             </ul>
@@ -92,6 +93,7 @@ const EmotionCalendar = () => {
                 tileClassName={tileClassName}
                 style={calendarStyles}
             />
+            <Divider mt="4" />
             <Box p="4" display="flex" justifyContent="center" flexDirection="column">
                 <ul className="emotions">
                     {renderEmotions(selectedDate)}
