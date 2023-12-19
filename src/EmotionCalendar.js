@@ -69,6 +69,7 @@ const EmotionCalendar = () => {
         if (emotionsForDate) {
             return Object.entries(emotionsForDate).map(([time, categories]) => (
                 <div key={time}>
+                    <Divider mt="24px" />
                     <div style={{marginTop:"24px", fontWeight:"bold", marginBottom:"16px", fontSize:"24px"}}>{time}</div>
                     {Object.entries(categories).map(([category, emotions]) => (
                         <div key={category}>
@@ -93,8 +94,7 @@ const EmotionCalendar = () => {
                 tileClassName={tileClassName}
                 style={calendarStyles}
             />
-            <Divider mt="4" />
-            <Box p="4" display="flex" justifyContent="center" flexDirection="column">
+            <Box px="4" display="flex" justifyContent="center" flexDirection="column">
                 <ul className="emotions">
                     {renderEmotions(selectedDate)}
                 </ul>
