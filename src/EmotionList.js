@@ -100,10 +100,7 @@ const generateImage = (groupedEmotions) => {
               ))}
               {imageUrl && <img style={{marginTop:"24px", }} src={imageUrl} alt="Emotion text" />}
               <Link to="/calendar" style={{marginTop:"24px", }}>Emotion Calendar</Link>
-
           </Box>
-
-
       </Container>
   );
 };

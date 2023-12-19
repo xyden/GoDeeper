@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import EmotionList from "./EmotionList";
@@ -39,6 +39,19 @@ const App = () => {
         return grouped;
     }, {});
   };
+
+  useEffect(() => {
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+                       || window.navigator.standalone
+                       || document.referrer.includes('android-app://');
+
+    if (isStandalone) {
+      alert('This is running as a standalone PWA.');
+    } else {
+      alert('This is NOT running as a standalone PWA.');
+    }
+  }, []);
+
 
   return (
     <ChakraProvider theme={theme}>
