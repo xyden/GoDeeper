@@ -58,7 +58,7 @@ function EmotionForm({ onSubmit }) {
     <Box as="form" onSubmit={handleSubmit}>
       <VStack justify="center" w="100%" mt="24px" mb="24px">
         <Image 
-          src='logo512-2.png' alt='Logo' 
+          src='logo512.png' alt='Go Deeper Logo' 
           w={[128, 200, 200]}
           borderRadius="50%"
           boxShadow= {colorMode === 'light' ? 'md' : 'dark-lg'}
