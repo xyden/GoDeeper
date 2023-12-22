@@ -1,14 +1,14 @@
 // Install.js
 
 import React, { useEffect }  from 'react';
-import { Box, Container, Image, VStack, Text, useColorMode } from "@chakra-ui/react";
+import { Box, Container, Divider, Flex, Image, VStack, Text, useColorMode } from "@chakra-ui/react";
 import { useNavigate } from 'react-router-dom';
 import useOS from './useOS';
 
 const InstallAndroid = () => {
     return (
       <div>
-        <h2>Installation Instructions for Android</h2>
+        <Text fontSize='xl' as='b' marginY="4" display="inline-block">Installation Instructions for Android</Text>
         <ol>
           <li>Tap the menu icon (three dots) in the upper right corner of the screen.</li>
           <li>Tap <strong>Add to Home Screen</strong>.</li>
@@ -22,13 +22,13 @@ const InstallAndroid = () => {
   const InstallIOS = () => {
     return (
       <div>
-        <h2>Installation Instructions for iOS</h2>
+        <Text fontSize='xl' as='b' marginY="4" display="block" textAlign="center">Install me</Text>
         <ol>
           <li>Tap the <strong>Share</strong> button at the bottom of the Safari window.</li>
           <li>Scroll down and tap <strong>Add to Home Screen</strong>.</li>
           <li>Tap <strong>Add</strong>.</li>
         </ol>
-        <p>The app icon will now appear on your home screen like any other app.</p>
+        <Text marginY="4" display="block" >The app icon will now appear on your home screen like any other app.</Text>
       </div>
     );
   };
@@ -45,8 +45,9 @@ const Install = () => {
   }, [os, navigate]);
 
   return (
-    <Box>
-      <VStack justify="center" w="100%" mt="24px" mb="24px">
+    <Flex height="100vh" width="100vw" align="center" justify="center">
+    <Box boxShadow= {colorMode === 'light' ? 'md' : 'dark-lg'} m="10" p="8" borderRadius={12}>
+      <VStack justify="center" w="100%" mb="24px">
         <Image 
           src='logo512.png' alt='Go Deeper Logo' 
           w={[128, 200, 200]}
@@ -56,11 +57,13 @@ const Install = () => {
         <Text fontSize='xl' as='b'>Go Deeper</Text>
         <Text fontSize='xs' mt="-2">Find and track your feelings</Text>
       </VStack>
-      <Container maxW="container.md">
+      <Divider mt="24px" />
+      <Container maxW="container.sm" >
         {os === 'Android' && <InstallAndroid />}
         {os === 'iOS' && <InstallIOS />}
       </Container>
     </Box>
+    </Flex>
   );
 };
 
